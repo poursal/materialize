@@ -7135,10 +7135,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       M.textareaAutoResize($textarea);
     });
 
-    $(document).on('keyup', text_area_selector, function () {
-      M.textareaAutoResize($(this));
-    });
-    $(document).on('keydown', text_area_selector, function () {
+    $(document).on('input', text_area_selector, function () {
       M.textareaAutoResize($(this));
     });
 
