@@ -8055,6 +8055,15 @@ $jscomp.polyfill = function (e, r, p, m) {
 
         var currChips = $chips[0].M_Chips;
 
+        // Revert blur from window unfocus
+        if (!currChips._selectedChip) {
+          for (var i = 0; i < $chips[0].childNodes.length; i++) {
+            if (document.activeElement === $chips[0].childNodes[i]) {
+              currChips.selectChip(i);
+            }
+          }
+        }
+
         // backspace and delete
         if (e.keyCode === 8 || e.keyCode === 46) {
           e.preventDefault();
@@ -8071,6 +8080,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
           if (currChips.chipsData.length) {
             currChips.selectChip(selectIndex);
+          } else {
+            currChips.$input[0].focus();
           }
 
           // left arrow key
