@@ -7947,7 +7947,7 @@ $jscomp.polyfill = function (e, r, p, m) {
         if (chip.hasOwnProperty('tag') && chip.tag !== '') {
           var exists = false;
           for (var i = 0; i < this.chipsData.length; i++) {
-            if (this.chipsData[i].tag === chip.tag) {
+            if (this.chipsData[i].tag.toLowerCase() === chip.tag.toLowerCase()) {
               exists = true;
               break;
             }
